@@ -50,7 +50,7 @@ $ npm run start
 
 ## Credits
 
-This software uses the following packages:
+This software uses the following:
 
 - [Express](https://expressjs.com/)
 - [Node.js](https://nodejs.org/)
