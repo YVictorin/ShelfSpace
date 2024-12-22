@@ -62,6 +62,5 @@ This software uses the following packages:
 
 MIT
 
----
 
 
