@@ -1,6 +1,10 @@
-import mysql from 'mysql2'
-import dotenv from 'dotenv'
+// if (process.env.NODE_ENV !== 'production') {
+//     //must use dynamic imports to add import in a conditional
+//     await import('dotenv').then((dotenv) => dotenv.config());
+// }
 
+import mysql from 'mysql2'
+import dotenv from 'dotenv';
 dotenv.config();
 
 // a pool is a collection of connections to the db, instead of making a brand new connection for each and every query, can be reused
@@ -18,7 +22,7 @@ export async function getBooks() {
 
 export async function getBook(id) {
 
-// bad practice
+// this is bad practice including user info directing into queries
 //     const [book] = await pool.query(`
 //     SELECT * 
 //     FROM books
@@ -26,7 +30,7 @@ export async function getBook(id) {
 // `, [id])
 
 
-//this is called a prepared statement: sending the sql and the values to the db completely seperately
+//this is called a prepared statement: sending the sql and the values to the db completely seperately by using ?
 //since this is likely coming over an http request it's untrusted data which cause sql injection attacks meaning people can get any sort of data they want from your db  
     const [book] = await pool.query(`
         SELECT * 
