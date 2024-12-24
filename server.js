@@ -5,7 +5,6 @@ import expressLayouts from 'express-ejs-layouts';
 import indexRouter from './routes/index.js'; 
 import authorRouter from './routes/authors.js';
 import bodyParser from 'body-parser';
-import Author from './models/author.js';
 
 // Get the current file's directory name in ES6
 const __filename = fileURLToPath(import.meta.url);
@@ -29,7 +28,7 @@ app.use('/', indexRouter);
 app.use('/authors', authorRouter); //every route will be prepended with /author
 
 
-//error handling for db, if you mispelled the username for example
+//base error handling
 app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Shelf Space is down, try again later.')
@@ -37,6 +36,5 @@ app.use((err, req, res, next) => {
 
 app.listen(process.env.PORT || 8080, async () => {
     console.log('Listening on port 8080')
-    console.log(await Author.getAll())
 })
 

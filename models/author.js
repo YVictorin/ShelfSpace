@@ -27,6 +27,18 @@ class Author {
         }
     }
 
+    static async findByName(name) {
+        const connection = await pool.getConnection();
+        try {
+            const [rows] = await connection.query(`SELECT * FROM authors WHERE LOWER(name) LIKE CONCAT(LOWER(?), '%')`, [name]) //this query is case insensitive
+            return rows;
+        } catch(e) {
+            console.error("Error finding author's name: ", e)
+        } finally {
+            connection.release();
+        }
+    }
+
     static async getAll() {
         const connection = await pool.getConnection();
         try {
