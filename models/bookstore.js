@@ -1,9 +1,10 @@
 import pool from '../database/connectionPool.js'
 
-class Author {
+
+class Bookstore {
     //using static classes so there is no need for instantiating, this approach is also used in Mongoose and other ORMs
     //not working with instance data like changing individual author objects, it's better to use static methods
-    static async create(name) {
+    static async createAuthor(name) {
         const connection = await pool.getConnection();
         try {
             const [result] = await connection.query(`INSERT INTO authors (name) VALUES (?)`, [name])
@@ -15,7 +16,8 @@ class Author {
         }
     }
 
-    static async findById(id) {
+
+    static async findAuthorById(id) {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(`SELECT * FROM authors WHERE id = ?`, [id]);
@@ -27,7 +29,8 @@ class Author {
         }
     }
 
-    static async findByName(name) {
+
+    static async findAuthorByName(name) {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(`SELECT * FROM authors WHERE LOWER(name) LIKE CONCAT(LOWER(?), '%')`, [name]) //this query is case insensitive
@@ -39,7 +42,8 @@ class Author {
         }
     }
 
-    static async getAll() {
+
+    static async getAllAuthors() {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(`SELECT * FROM authors`);
@@ -51,7 +55,8 @@ class Author {
         }
     }
 
-    static async getCount() {
+
+    static async getAuthorCount() {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(`SELECT COUNT(name) AS count_authors FROM authors`);
@@ -64,4 +69,6 @@ class Author {
     }
 }
 
-export default Author
+
+export default Bookstore
+

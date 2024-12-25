@@ -1,5 +1,5 @@
 import express from 'express'
-import Author from '../models/author.js';
+import Bookstore from '../models/bookstore.js';
 const router = express.Router();
 
 //All authors endpoint
@@ -12,7 +12,7 @@ router.get('/', async(req, res) => {
         })
     } 
     try {
-        const authors = await Author.findByName(req.query.name);
+        const authors = await Bookstore.findAuthorByName(req.query.name);
         res.render('authors/index', {
             author: authors,
             searchOption: req.query
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
         }
     
         // Create the author in the db
-        const newAuthorId = await Author.create(userAuthorName);
+        const newAuthorId = await Bookstore.createAuthor(userAuthorName);
     
         // Redirect to authors page
         // res.redirect(`authors/${userAuthorName.id}`);
