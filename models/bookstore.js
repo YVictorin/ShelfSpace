@@ -10,7 +10,7 @@ class Bookstore {
             const [result] = await connection.query(`INSERT INTO authors (name) VALUES (?)`, [name])
             return result.insertId;
         } catch (e) {
-            console.error('error inserting author: ', e)
+            console.error('Error inserting author: ', e)
         } finally {
             connection.release();
         }

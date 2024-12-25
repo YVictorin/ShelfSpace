@@ -10,6 +10,8 @@ import bodyParser from 'body-parser';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const port = process.env.PORT || 3306;
+
 const app = express();
 
 // Set views and other settings
@@ -34,7 +36,8 @@ app.use((err, req, res, next) => {
     res.status(500).send('Shelf Space is down, try again later.')
 })
 
-app.listen(process.env.PORT || 8080, async () => {
-    console.log('Listening on port 8080')
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
 })
 
