@@ -26,7 +26,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-
 // Set views and other settings
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views')); //path.join for better cross-platform compatibility
@@ -50,7 +49,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }));
-
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -62,10 +60,10 @@ app.use((err, req, res, next) => {
 })
 
 // Use the routers for each respective route
-app.use('/register', registerRouter)
-app.use('/login', loginRouter);
 app.use('/', indexRouter);
-app.use('/authors', authorRouter); //every route will be prepended with /author
+app.use('/authors', authorRouter); //every route will be prepended with /authors
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 
 
 app.listen(port, () => {

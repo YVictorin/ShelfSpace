@@ -1,5 +1,3 @@
-//git commit -m "feat: add authentication and login portion for users"
-
 import express from 'express';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
@@ -16,7 +14,7 @@ router.post('/', async (req, res) =>  {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         users.push({
-            id: Date.now().toString(),   //when there is a database this will be automatically generated but just for now
+            id: Date.now().toString(),   //when there is another database this will be automatically generated, but just for now
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword
