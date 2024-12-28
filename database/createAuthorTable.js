@@ -1,10 +1,9 @@
 import pool from './connectionPool.js';
 
 //mysql does not have built-in schema defintion like Mongoose so you must create tables manually
-async function createAuthorTable() {
+ async function createAuthorTable() {
     const connection = await pool.getConnection();
     try {
-        // Select the 'shelf_space' database
         // Seperate different queries in different .query calls
         await connection.query('USE shelf_space');
 
@@ -23,4 +22,4 @@ async function createAuthorTable() {
     }
 }
 
-createAuthorTable();
+export default createAuthorTable;
