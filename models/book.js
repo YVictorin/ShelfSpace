@@ -22,7 +22,7 @@ export async function getBooks() {
 
 export async function getBook(id) {
 
-// this is bad practice including user info directing into queries
+//   unwelcomed practice including user info directing into queries
 //     const [book] = await pool.query(`
 //     SELECT * 
 //     FROM books
