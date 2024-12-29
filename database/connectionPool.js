@@ -5,6 +5,7 @@ dotenv.config();
 
 const createDatabaseIfNotExists = async () => {
     const connection = await mysql.createConnection({
+        //will be rds credentials
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD
