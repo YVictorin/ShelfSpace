@@ -11,6 +11,8 @@ dotenv.config();
 
 import indexRouter from './routes/index.js'; 
 import authorRouter from './routes/authors.js';
+import bookRouter from './routes/books.js'
+
 import loginRouter from './routes/login.js';
 import registerRouter from './routes/register.js';
 import bodyParser from 'body-parser';
@@ -64,6 +66,7 @@ app.use('/', indexRouter);
 app.use('/authors', authorRouter); //every route will be prepended with /authors
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use('/books', bookRouter);
 
 
 app.listen(port, () => {
